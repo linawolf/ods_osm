@@ -13,6 +13,9 @@ return [
             'disabled' => 'hidden',
         ],
         'iconfile' => 'EXT:ods_osm/Resources/Public/Icons/icon_tx_odsosm_vector.png',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'columns' => [
         'hidden' => [
@@ -83,21 +86,11 @@ return [
         'file' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:ods_osm/Resources/Private/Language/locallang_db.xlf:tx_odsosm_vector.file',
-            'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
-                'file',
-                [
-                    'maxitems' => 1,
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:ods_osm/Resources/Private/Language/locallang_db:tx_odsosm_vector.file.add'
-                    ],
-                    'foreign_match_fields' => [
-                        'fieldname' => 'file',
-                        'tablenames' => 'tx_odsosm_vector',
-                    ],
-                    'default' => 0,
-                ],
-                'geojson,json'
-            )
+            'config' => [
+                'type' => 'file',
+                'maxitems' => 1,
+                'allowed' => 'geojson,json',
+            ],
         ],
         'properties' => [
             'exclude' => 0,

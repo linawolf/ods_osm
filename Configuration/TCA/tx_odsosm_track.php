@@ -13,6 +13,9 @@ return [
             'disabled' => 'hidden',
         ],
         'iconfile' => 'EXT:ods_osm/Resources/Public/Icons/icon_tx_odsosm_track.png',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'columns' => [
         'hidden' => [
@@ -68,21 +71,14 @@ return [
         'file' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:ods_osm/Resources/Private/Language/locallang_db.xlf:tx_odsosm_track.file',
-            'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
-                'file',
-                [
-                    'maxitems' => 1,
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:ods_osm/Resources/Private/Language/locallang_db:tx_odsosm_track.file.add'
-                    ],
-                    'foreign_match_fields' => [
-                        'fieldname' => 'file',
-                        'tablenames' => 'tx_odsosm_track',
-                    ],
-                    'default' => 0,
+            'config' => [
+                'type' => 'file',
+                'maxitems' => 1,
+                'allowed' => 'gpx,kml',
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:ods_osm/Resources/Private/Language/locallang_db:tx_odsosm_track.file.add'
                 ],
-                'gpx,kml'
-            )
+            ],
         ],
         'min_lon' => [
             'exclude' => 0,
